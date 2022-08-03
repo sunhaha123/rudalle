@@ -213,12 +213,13 @@ def api_make_image_v1():
         scores += _scores
     idx = uuid4().hex
     for i in range(len(pil_images)):
-        pil_images[i].save(f"./result/{task_id}_i.png")
         task_id = idx + str(i)
+        pil_images[i].save(f"./result/{task_id}.png")
         uplaod_task_img(task_id, 100, f"./result/{task_id}.png")
 
     img_urls = []
-    for i in range(len()):
+    for i in range(len(pil_images)):
+        task_id = idx + str(i)
         img_urls.append(_get_img_url(task_id, 100))
 
     data = {'taskId':task_id,'prompt_tanslation':text,'imgs':img_urls}
