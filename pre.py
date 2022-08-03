@@ -188,7 +188,7 @@ def api_make_image_v1():
 
     # translation
     translator = Translator(service_urls=['translate.google.cn'])
-    text = translators.google(text, from_language='en', to_language='ru')
+    text = translator.translate(text, dest='ru', src='auto').text
 
     # build rudall model
     dalle = get_rudalle_model(model_name, pretrained=True, fp16=True, device='cuda')
