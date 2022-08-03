@@ -46,7 +46,7 @@ print("device:", device.type)
 import transformers
 import more_itertools
 import tqdm
-import translators
+from googletrans import Translator
 import ruclip
 from rudalle.pipelines import generate_images, show, super_resolution
 from rudalle import get_rudalle_model, get_tokenizer, get_vae, get_realesrgan
@@ -187,6 +187,7 @@ def api_make_image_v1():
     total_num = num_items * 3
 
     # translation
+    translator = Translator(service_urls=['translate.google.cn'])
     text = translators.google(text, from_language='en', to_language='ru')
 
     # build rudall model
